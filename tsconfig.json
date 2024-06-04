@@ -1,0 +1,27 @@
+{
+  "extends": "@adonisjs/tsconfig/tsconfig.app.json",
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./build",
+    "paths": {
+      "#normalizers/*": ["./app/normalizers/*.ts"],
+      "#queries/*": ["./app/queries/*.ts"],
+      "#controllers/*": ["./app/controllers/*.ts"],
+      "#exceptions/*": ["./app/exceptions/*.ts"],
+      "#models/*": ["./app/models/*.ts"],
+      "#mails/*": ["./app/mails/*.ts"],
+      "#services/*": ["./app/services/*.ts"],
+      "#listeners/*": ["./app/listeners/*.ts"],
+      "#events/*": ["./app/events/*.ts"],
+      "#middleware/*": ["./app/middleware/*.ts"],
+      "#validators/*": ["./app/validators/*.ts"],
+      "#providers/*": ["./app/providers/*.ts"],
+      "#policies/*": ["./app/policies/*.ts"],
+      "#abilities/*": ["./app/abilities/*.ts"],
+      "#database/*": ["./database/*.ts"],
+      "#tests/*": ["./tests/*.ts"],
+      "#start/*": ["./start/*.ts"],
+      "#config/*": ["./config/*.ts"]
+    }
+  }
+}
