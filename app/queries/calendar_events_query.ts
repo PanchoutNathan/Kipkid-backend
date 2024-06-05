@@ -11,10 +11,19 @@ export default class CalendarEventsQuery extends BaseQuery<typeof CalendarEvent,
     return new CalendarEventsQuery(user)
   }
 
+  withDate(date: string) {
+    this.query.where('date', date)
+    return this
+  }
+
   canRead() {
+    if (!this.user) {
+      // return this
+    }
+
     this.query
       .join('contracts', (query) => {
-        return query.on('calendar_events.contract', '=', 'contracts.id')
+        return query.on('calendar_events.contract_id', '=', 'contracts.id')
       })
       .whereRaw('? = ANY (contracts.acl_read)', [1])
 

@@ -17,6 +17,8 @@ const GetAllCalendarEventsController = () =>
   import('#controllers/calendar_events/get_all_calendar_events_controller')
 const GetCalendarEventsController = () =>
   import('#controllers/calendar_events/get_calendar_events_controller')
+const CreateCalendarEventController = () =>
+  import('#controllers/calendar_events/create_calendar_event_controller')
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
@@ -48,9 +50,11 @@ router
     router
       .group(() => {
         router.get('/', [GetAllCalendarEventsController])
-        router.get('/:date/contract/:contractId', [GetCalendarEventsController])
+        router.get('/:date', [GetCalendarEventsController])
+        router.post('/', [CreateCalendarEventController])
       })
       .prefix('calendar-events')
+      .use(middleware.auth())
 
     router
       .group(() => {

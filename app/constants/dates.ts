@@ -1,0 +1,2 @@
+export const DEFAULT_FORMAT_DATE = "YYYY-MM-DD";
+export const FORMAT_RETRIEVE_DATE = "YYYY-MM-DD";

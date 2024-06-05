@@ -15,6 +15,8 @@
   },
   "imports": {
     "#normalizers/*": "./app/normalizers/*.ts",
+    "#types/*": "./app/types/*.ts",
+    "#constants/*": "./app/constants/*.ts",
     "#queries/*": "./app/queries/*.ts",
     "#controllers/*": "./app/controllers/*.ts",
     "#exceptions/*": "./app/exceptions/*.ts",
