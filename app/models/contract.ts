@@ -19,7 +19,7 @@ export default class Contract extends BaseModel {
   declare settings?: object
 
   @column()
-  declare color?: string
+  declare color: string
 
   @column()
   declare acl_read: number[]

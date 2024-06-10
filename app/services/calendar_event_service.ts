@@ -1,4 +1,5 @@
 import CalendarEvent from '#models/calendar_event'
+import CalendarEventsQuery from '#queries/calendar_events_query'
 import ContractService from '#services/contract_service'
 import { CalendarEventEvent, DTOCalendarEvent } from '#types/calendar_event'
 import { inject } from '@adonisjs/core'
@@ -9,6 +10,10 @@ import utc from 'dayjs/plugin/utc.js'
 @inject()
 export default class CalendarEventService {
   constructor(protected contractService: ContractService) {}
+
+  async getEventsByDate(date: string) {
+    return CalendarEventsQuery.new().withDate(date).canRead().query
+  }
 
   async addEvent(
     contracts: number[],
