@@ -31,8 +31,8 @@ export default class CalendarEvent extends BaseModel {
   @column()
   declare contractId: number
 
-  @hasOne(() => Contract)
-  declare profiles: HasOne<typeof Contract>
+  @hasOne(() => Contract, { localKey: 'contractId' })
+  declare contract: HasOne<typeof Contract>
 
   @column()
   declare settings?: any

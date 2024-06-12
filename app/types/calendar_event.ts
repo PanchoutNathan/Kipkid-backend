@@ -3,8 +3,7 @@ import { Dayjs } from 'dayjs'
 export type DailyCalendarEvent = {
   id: string
   contract: string
-  events: CalendarEvent[]
-  validatedEvents?: CalendarEvent[]
+  events: CalendarEventEvent[]
   date: string
   type?: DailyCalendarEventType
   meal?: CalendarEventMeal
@@ -41,9 +40,22 @@ export type CalendarEventKilometers = {
   otherChildCount: number
 }
 
+export type CalendarEventLight = {
+  start: {
+    hour: number
+    minutes: number
+  }
+  end: {
+    hour: number
+    minutes: number
+  }
+}
+
 export type CalendarEventEvent = {
   start: string
+  validatedStart?: string
   end: string
+  validatedEnd?: string
 }
 
 export type DTOCalendarEvent = {

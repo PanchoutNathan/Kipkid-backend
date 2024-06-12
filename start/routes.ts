@@ -19,6 +19,7 @@ const GetCalendarEventsController = () =>
   import('#controllers/calendar_events/get_calendar_events_controller')
 const CreateCalendarEventController = () =>
   import('#controllers/calendar_events/create_calendar_event_controller')
+const EventTemplatesController = () => import('#controllers/event_templates_controller')
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
@@ -62,6 +63,11 @@ router
       })
       .prefix('user')
       .use(middleware.auth())
+
+    router
+      .resource('event-template', EventTemplatesController)
+      .apiOnly()
+      .use('*', middleware.auth())
 
     // ajoutez cette route
 
