@@ -79,3 +79,13 @@ export interface DayData {
 export type CalendarDayData = null | DayData
 export type CalendarWeekData = CalendarDayData[]
 export type CalendarData = CalendarWeekData[]
+
+export type WeekEventsLight = {
+  0: CalendarEventLight[]
+  1: CalendarEventLight[]
+  2: CalendarEventLight[]
+  3: CalendarEventLight[]
+  4: CalendarEventLight[]
+  5: CalendarEventLight[]
+  6: CalendarEventLight[]
+}

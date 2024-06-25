@@ -11,6 +11,7 @@ export default class EventTemplatesController {
    */
   async index({ auth }: HttpContext) {
     const user = await auth.authenticate()
+
     return this.eventTemplateService.getUserTemplates(user)
   }
 
@@ -45,6 +46,7 @@ export default class EventTemplatesController {
    */
   async destroy({ params }: HttpContext) {
     const id = params.id
-    return this.eventTemplateService.removeEventTemplate(id)
+    await this.eventTemplateService.removeEventTemplate(id)
+    return { id: id }
   }
 }

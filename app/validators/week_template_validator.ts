@@ -1,9 +1,9 @@
 import { calendarEventLightValidator } from '#validators/events'
 import vine from '@vinejs/vine'
 
-export const createEventTemplateValidator = vine.compile(
+export const createWeekTemplateValidator = vine.compile(
   vine.object({
     title: vine.string(),
-    event: vine.array(calendarEventLightValidator),
+    event: vine.record(vine.array(calendarEventLightValidator)),
   })
 )

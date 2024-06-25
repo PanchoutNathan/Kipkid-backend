@@ -3,12 +3,9 @@ import EventTemplate from '#models/event_template'
 import User from '#models/user'
 import EventTemplateQuery from '#queries/event_template_query'
 import { CalendarEventLight } from '#types/calendar_event'
-import { inject } from '@adonisjs/core'
-import { HttpContext } from '@adonisjs/core/http'
 
-@inject()
 export default class EventTemplateService {
-  constructor(protected ctx: HttpContext) {}
+  constructor() {}
 
   async getUserTemplates(user: User): Promise<EventTemplate[]> {
     return await EventTemplateQuery.new().fromUser(user).query
