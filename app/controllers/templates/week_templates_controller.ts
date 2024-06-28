@@ -22,7 +22,7 @@ export default class WeekTemplatesController {
     const user = await auth.authenticate()
 
     const payload = await request.validateUsing(createWeekTemplateValidator)
-    console.log('payload', payload)
+
     return this.weekTemplateService.creatWeekTemplate(
       user,
       payload.title,

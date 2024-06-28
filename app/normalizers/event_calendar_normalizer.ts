@@ -2,6 +2,8 @@ import CalendarEvent from '#models/calendar_event'
 import Contract from '#models/contract'
 import User from '#models/user'
 import { BaseNormalizer } from '#normalizers/base_normalizer'
+import { getDefaultCalendarEventCar } from '#types/calendar_event'
+import { getDefaultSelectedMeal } from '#types/meals'
 import dayjs from 'dayjs'
 
 type NormalizedCalendarEvent = Contract['$attributes'] & {
@@ -53,6 +55,8 @@ export default class EventCalendarNormalizer extends BaseNormalizer<
       ...obj,
       color,
       eventsLight: events,
+      meals: obj.meal ?? getDefaultSelectedMeal(),
+      car: obj.car ?? getDefaultCalendarEventCar(),
     }
   }
 }

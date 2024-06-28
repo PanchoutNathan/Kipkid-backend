@@ -21,6 +21,10 @@ const CreateCalendarEventController = () =>
   import('#controllers/calendar_events/create_calendar_event_controller')
 const EventTemplatesController = () => import('#controllers/templates/event_templates_controller')
 const WeekTemplatesController = () => import('#controllers/templates/week_templates_controller')
+const ClockInCalendarEventController = () =>
+  import('#controllers/calendar_events/clock_in_calendar_event_controller')
+const UpdateCalendarEventController = () =>
+  import('#controllers/calendar_events/update_calendar_event_controller')
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
@@ -53,6 +57,8 @@ router
       .group(() => {
         router.get('/', [GetAllCalendarEventsController])
         router.get('/:date', [GetCalendarEventsController])
+        router.post('/:date/clock-in/:contract', [ClockInCalendarEventController])
+        router.post('/:date/edit/:contract', [UpdateCalendarEventController])
         router.post('/', [CreateCalendarEventController])
       })
       .prefix('calendar-events')

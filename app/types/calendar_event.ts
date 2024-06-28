@@ -1,3 +1,4 @@
+import { SelectedMeals } from '#types/meals'
 import { Dayjs } from 'dayjs'
 
 export type DailyCalendarEvent = {
@@ -28,16 +29,15 @@ export enum DailyCalendarEventType {
   CUSTOM = 'custom',
 }
 
-export type CalendarEventMeal = {
-  breakfast: boolean
-  lunch: boolean
-  gouter: boolean
-  dinner: boolean
-}
+export type CalendarEventMeal = SelectedMeals
 
 export type CalendarEventKilometers = {
-  count: number
-  otherChildCount: number
+  distance: number
+  childCount: number
+}
+
+export const getDefaultCalendarEventCar = (): CalendarEventKilometers => {
+  return { distance: 0, childCount: 1 }
 }
 
 export type CalendarEventLight = {
@@ -61,6 +61,19 @@ export type CalendarEventEvent = {
 export type DTOCalendarEvent = {
   start: { hour: number; minute: number }
   end: { hour: number; minute: number }
+}
+
+export type DTOClockInCalendarEvent = {
+  validatedStart?: string
+  validatedEnd?: string
+  start: string
+  end: string
+}
+
+export type DTOUpdateCalendarEvent = {
+  events?: DTOClockInCalendarEvent[]
+  meals?: CalendarEventMeal
+  car?: CalendarEventKilometers
 }
 
 export type DailyCalendarEventByWeek = {

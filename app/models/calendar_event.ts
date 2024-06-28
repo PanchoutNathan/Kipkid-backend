@@ -20,10 +20,13 @@ export default class CalendarEvent extends BaseModel {
   declare meal?: CalendarEventMeal
 
   @column()
-  declare kilometers?: CalendarEventKilometers
+  declare car?: CalendarEventKilometers
 
   @column({ serialize: (value) => value ?? [] })
   declare events: CalendarEventEvent[]
+
+  @column()
+  declare validated?: boolean
 
   @column()
   declare type: string

@@ -17,7 +17,7 @@ export default class extends BaseSchema {
       table.specificType('events', 'jsonb[]')
       table.string('date')
       table.jsonb('meal')
-      table.jsonb('kilometers')
+      table.jsonb('car')
       table.jsonb('settings')
       table.text('type')
       table.integer('contract_id').unsigned().references('id').inTable('contracts')

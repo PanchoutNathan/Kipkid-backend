@@ -32,7 +32,6 @@ export default class WeekTemplateTemplateService {
     event: WeekEventsLight
   ): Promise<WeekTemplate> {
     const newTemplate = new WeekTemplate()
-    console.log(event)
     newTemplate.userId = user.id
     newTemplate.event = event
     newTemplate.title = title
