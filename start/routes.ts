@@ -28,15 +28,6 @@ const UpdateCalendarEventController = () =>
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
-router.get('/', [TotoController])
-router.get('/titi/toto', [TotoController])
-
-router.get('/toto', async () => {
-  return {
-    hello: 'toto',
-  }
-})
-
 router
   .group(() => {
     router
@@ -83,3 +74,4 @@ router
     router.get('/', [TotoController])
   })
   .prefix('api')
+router.on('/').renderInertia('home', { version: 6 })
