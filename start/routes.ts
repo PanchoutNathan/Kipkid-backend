@@ -25,6 +25,7 @@ const ClockInCalendarEventController = () =>
   import('#controllers/calendar_events/clock_in_calendar_event_controller')
 const UpdateCalendarEventController = () =>
   import('#controllers/calendar_events/update_calendar_event_controller')
+const UploadsController = () => import('#controllers/uploads_controller')
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
@@ -70,8 +71,11 @@ router
     router.resource('week-template', WeekTemplatesController).apiOnly().use('*', middleware.auth())
 
     // ajoutez cette route
-
+    router.post('/upload', [UploadsController, 'upload'])
+    router.get('/upload/:image', [UploadsController, 'getImage'])
     router.get('/', [TotoController])
   })
   .prefix('api')
 router.on('/').renderInertia('home', { version: 6 })
+
+router.get('/email', [GetAllCalendarEventsController])

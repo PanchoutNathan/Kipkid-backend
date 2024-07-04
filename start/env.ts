@@ -28,4 +28,14 @@ export default await Env.create(new URL('../', import.meta.url), {
   DB_USER: Env.schema.string(),
   DB_PASSWORD: Env.schema.string.optional(),
   DB_DATABASE: Env.schema.string(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring the mail package
+  |----------------------------------------------------------
+  */
+  RESEND_API_KEY: Env.schema.string(),
+  CLOUDFLARE_R2_ACCESS_ID: Env.schema.string(),
+  CLOUDFLARE_R2_SECRET: Env.schema.string(),
+  CLOUDFLARE_R2_ENDPOINT: Env.schema.string(),
 })
