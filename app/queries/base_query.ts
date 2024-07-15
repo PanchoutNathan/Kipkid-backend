@@ -1,3 +1,4 @@
+import User from '#models/user'
 import { LucidModel, LucidRow, ModelQueryBuilderContract } from '@adonisjs/lucid/types/model'
 import { StrictValues } from '@adonisjs/lucid/types/querybuilder'
 
@@ -74,6 +75,11 @@ export default class BaseQuery<Model extends LucidModel, Record extends LucidRow
   async sum(column: string) {
     const result = await this.query.sum(column, 'sum').first()
     return result?.$extras.sum ?? 0
+  }
+
+  canView(user: User) {
+    this.query.whereRaw('? = ANY (acl_read)', [user?.id as number])
+    return this
   }
 
   then(
