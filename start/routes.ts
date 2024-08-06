@@ -67,7 +67,7 @@ router
       .apiOnly()
       .use('*', middleware.auth())
 
-    // router.resource('child', ChildrenController).apiOnly().use('*', middleware.auth())
+    router.resource('child', ChildrenController).apiOnly().use('*', middleware.auth())
 
     router.resource('week-template', WeekTemplatesController).apiOnly().use('*', middleware.auth())
 

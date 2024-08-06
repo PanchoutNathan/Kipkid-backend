@@ -14,6 +14,7 @@ export type DTOCreateChild = {
   sex: string
   birth: Date
   color: string
+  sticker: string
   allergies?: ChildInformation[]
   handicaps?: ChildInformation[]
 }

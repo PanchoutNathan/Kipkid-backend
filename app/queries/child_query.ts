@@ -20,7 +20,7 @@ export default class ChildQuery extends BaseQuery<typeof Child, Child> {
   }
 
   withContract() {
-    // this.query.preload('contracts')
+    this.query.preload('contracts')
     return this
   }
 }

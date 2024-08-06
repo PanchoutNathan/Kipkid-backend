@@ -4,12 +4,12 @@ import type {
   CalendarEventKilometers,
   CalendarEventMeal,
 } from '#types/calendar_event'
-import { column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
 import type { HasOne } from '@adonisjs/lucid/types/relations'
 
 import { DateTime } from 'luxon'
 
-export default class CalendarEvent {
+export default class CalendarEvent extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
