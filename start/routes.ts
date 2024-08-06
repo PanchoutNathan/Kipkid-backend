@@ -13,8 +13,7 @@ const LoginController = () => import('#controllers/auth/login_controller')
 const LogoutsController = () => import('#controllers/auth/logouts_controller')
 const MeController = () => import('#controllers/users/me_controller')
 const GetContractsController = () => import('#controllers/contracts/get_contracts_controller')
-const GetAllCalendarEventsController = () =>
-  import('#controllers/calendar_events/get_all_calendar_events_controller')
+
 const GetCalendarEventsController = () =>
   import('#controllers/calendar_events/get_calendar_events_controller')
 const CreateCalendarEventController = () =>
@@ -26,6 +25,7 @@ const ClockInCalendarEventController = () =>
 const UpdateCalendarEventController = () =>
   import('#controllers/calendar_events/update_calendar_event_controller')
 const UploadsController = () => import('#controllers/uploads_controller')
+const ChildrenController = () => import('#controllers/children_controller')
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 
@@ -47,7 +47,6 @@ router
 
     router
       .group(() => {
-        router.get('/', [GetAllCalendarEventsController])
         router.get('/:date', [GetCalendarEventsController])
         router.post('/:date/clock-in/:contract', [ClockInCalendarEventController])
         router.post('/:date/edit/:contract', [UpdateCalendarEventController])
@@ -68,6 +67,8 @@ router
       .apiOnly()
       .use('*', middleware.auth())
 
+    // router.resource('child', ChildrenController).apiOnly().use('*', middleware.auth())
+
     router.resource('week-template', WeekTemplatesController).apiOnly().use('*', middleware.auth())
 
     // ajoutez cette route
@@ -77,5 +78,3 @@ router
   })
   .prefix('api')
 router.on('/').renderInertia('home', { version: 6 })
-
-router.get('/email', [GetAllCalendarEventsController])

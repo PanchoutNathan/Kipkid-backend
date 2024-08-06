@@ -1,4 +1,4 @@
-import { colors } from '#constants/Colors'
+import { Colors } from '#constants/colors'
 
 export type Contract = {
   id: string
@@ -18,7 +18,7 @@ export const BOY_CONTRACT: Contract = {
   id: '1',
   firstName: 'Dimitri',
   lastName: 'Delavega',
-  color: colors.blue['500'],
+  color: Colors.blue['500'],
   sex: ContractSex.BOY,
 }
 export const GIRL_CONTRACT: Contract = {
