@@ -1,4 +1,5 @@
 import CalendarEvent from '#models/calendar_event'
+import User from '#models/user'
 import CalendarEventsQuery from '#queries/calendar_events_query'
 import ContractService from '#services/contract_service'
 import {
@@ -17,8 +18,8 @@ import utc from 'dayjs/plugin/utc.js'
 export default class CalendarEventService {
   constructor(protected contractService: ContractService) {}
 
-  async getEventsByDate(date: string) {
-    return CalendarEventsQuery.new().withDate(date).canRead().query
+  async getEventsByDate(user: User, date: string) {
+    return CalendarEventsQuery.new(user).withDate(date).canRead().query
   }
 
   async addEvent(

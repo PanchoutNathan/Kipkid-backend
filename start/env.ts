@@ -38,4 +38,5 @@ export default await Env.create(new URL('../', import.meta.url), {
   CLOUDFLARE_R2_ACCESS_ID: Env.schema.string(),
   CLOUDFLARE_R2_SECRET: Env.schema.string(),
   CLOUDFLARE_R2_ENDPOINT: Env.schema.string(),
+  HOST_URL: Env.schema.string(),
 })

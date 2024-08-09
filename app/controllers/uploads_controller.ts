@@ -16,7 +16,7 @@ export default class UploadsController {
     console.log(image?.tmpPath)
     const readable = createReadStream(image!.tmpPath!)
 
-    await disk.putStream(key, readable)
+    await disk.putStream(key, readable, { visibility: 'public' })
     const url = await disk.getUrl(key)
     console.log(url)
 
@@ -24,6 +24,8 @@ export default class UploadsController {
   }
   async getImage({ response, request }: HttpContext) {
     const imagePath = request.param('image')
+    return response.redirect('myapp://auth/register')
+    return this.uploadService.getUrl(imagePath)
     const file = await this.uploadService.getStream(imagePath)
     return response.stream(file)
   }

@@ -40,7 +40,7 @@ export default class UploadService {
   }
 
   async getSignedUrl(key: string) {
-    const url = this.disk.getSignedUrl(key)
+    const url = this.disk.getSignedUrl(key, { expiresIn: 'never' })
     return url
   }
 }
