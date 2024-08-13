@@ -73,7 +73,7 @@ router
 
     router
       .group(() => {
-        router.post('exist', [UsersController])
+        router.post('exist', [UsersController, 'checkIfAlreadyExist'])
       })
       .prefix('users')
 
