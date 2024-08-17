@@ -21,11 +21,13 @@
       "#providers/*": ["./app/providers/*.js"],
       "#policies/*": ["./app/policies/*.js"],
       "#abilities/*": ["./app/abilities/*.js"],
+      "#utils/*": ["./app/utils/*.js"],
       "#database/*": ["./database/*.js"],
       "#tests/*": ["./tests/*.js"],
       "#start/*": ["./start/*.js"],
       "#config/*": ["./config/*.js"],
       "#emails/*": ["./emails/*"],
+
       "#react-emails/*": ["./react-emails/*.js"],
       "#react-emails/emails/*": ["./react-emails/emails/*.jsx"]
     }

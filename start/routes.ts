@@ -77,6 +77,8 @@ router
       })
       .prefix('users')
 
+    router.resource('users', UsersController).apiOnly().use('*', middleware.auth())
+
     router
       .resource('event-template', EventTemplatesController)
       .apiOnly()

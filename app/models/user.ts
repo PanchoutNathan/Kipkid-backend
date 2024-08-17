@@ -44,6 +44,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare city: string | null
 
+  @column.date()
+  declare birthday: DateTime | undefined
+
   @column()
   declare pajeNumber: string | null
 
