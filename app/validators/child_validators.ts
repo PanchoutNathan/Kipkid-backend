@@ -12,6 +12,7 @@ export const createChildValidator = vine.compile(
     sex: vine.string(),
     birth: vine.date(),
     color: vine.string(),
+    sticker: vine.string(),
     allergies: vine.array(childInformationValidator).optional(),
     handicaps: vine.array(childInformationValidator).optional(),
   })

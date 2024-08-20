@@ -15,13 +15,17 @@ export default class Child extends BaseModel {
   @column()
   declare sex: string
 
-  @column.date({
-    serialize: (value) => value.toFormat('dd LLL yyyy'),
-  })
+  @column.date()
   declare birth: DateTime
 
   @column()
   declare color: string
+
+  @column()
+  declare sticker: string
+
+  // @hasMany(() => Contract)
+  // declare contracts: HasMany<typeof Contract>
 
   @column()
   declare allergies?: ChildInformation[]

@@ -11,7 +11,7 @@ export default class LoginController {
 
     return response.ok({
       token: token,
-      ...user.serialize(),
+      user: user.serialize(),
     })
   }
 }

@@ -18,6 +18,7 @@ export default class ChildService {
   async getAllChilds(): Promise<Child[]> {
     const user = await this.ctx.auth.authenticate()
     const result = await ChildQuery.new(user).canRead()?.query
+
     return result ?? []
   }
 
@@ -41,7 +42,9 @@ export default class ChildService {
     child.handicaps = payload.handicaps
     child.acl_read = [user.id]
     child.acl_write = [user.id]
+    child.sticker = payload.sticker
     child.birth = DateTime.fromJSDate(payload.birth)
+    await child.save()
     return child
   }
 
@@ -52,8 +55,10 @@ export default class ChildService {
     child.sex = payload.sex
     child.color = payload.color
     child.allergies = payload.allergies
+    child.sticker = payload.sticker
     child.handicaps = payload.handicaps
     child.birth = DateTime.fromJSDate(payload.birth)
+    child.save()
     return child
   }
 

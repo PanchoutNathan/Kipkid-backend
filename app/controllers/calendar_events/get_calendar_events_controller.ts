@@ -16,7 +16,7 @@ export default class GetCalendarEventsController {
     const { date } = params
 
     const contracts = await contractSerivce.getUserContracts()
-    const events = await calendarEventService.getEventsByDate(date)
+    const events = await calendarEventService.getEventsByDate(user, date)
     const normalizer = new EventCalendarNormalizer(user, contracts)
     return normalizer.normalizeArray(events)
   }

@@ -1,0 +1,23 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "E7BE39C5XM.com.anonymous.MobileAppKip",
+        "paths": [
+          "/auth/*"
+        ]
+      }
+    ]
+  },
+  "activitycontinuation": {
+    "apps": [
+      "E7BE39C5XM.com.anonymous.MobileAppKip"
+    ]
+  },
+  "webcredentials": {
+    "apps": [
+      "E7BE39C5XM.com.anonymous.MobileAppKip"
+    ]
+  }
+}

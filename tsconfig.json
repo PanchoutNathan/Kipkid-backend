@@ -2,7 +2,7 @@
   "extends": "@adonisjs/tsconfig/tsconfig.app.json",
   "compilerOptions": {
     "rootDir": "./",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "outDir": "./build",
     "paths": {
       "#normalizers/*": ["./app/normalizers/*.js"],
@@ -21,11 +21,15 @@
       "#providers/*": ["./app/providers/*.js"],
       "#policies/*": ["./app/policies/*.js"],
       "#abilities/*": ["./app/abilities/*.js"],
+      "#utils/*": ["./app/utils/*.js"],
       "#database/*": ["./database/*.js"],
       "#tests/*": ["./tests/*.js"],
       "#start/*": ["./start/*.js"],
       "#config/*": ["./config/*.js"],
-      "#emails/*": ["./config/*.js"]
+      "#emails/*": ["./emails/*"],
+
+      "#react-emails/*": ["./react-emails/*.js"],
+      "#react-emails/emails/*": ["./react-emails/emails/*.jsx"]
     }
   }
 }

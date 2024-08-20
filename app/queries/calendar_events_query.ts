@@ -18,14 +18,14 @@ export default class CalendarEventsQuery extends BaseQuery<typeof CalendarEvent,
 
   canRead() {
     if (!this.user) {
-      // return this
+      return this
     }
 
     this.query
       .join('contracts', (query) => {
         return query.on('calendar_events.contract_id', '=', 'contracts.id')
       })
-      .whereRaw('? = ANY (contracts.acl_read)', [1])
+      .whereRaw('? = ANY (contracts.acl_read)', [this.user.id])
 
     return this
   }
