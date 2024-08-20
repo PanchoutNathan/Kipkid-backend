@@ -91,6 +91,7 @@ const container = {
 
 const h1 = {
   color: '#333',
+  textAlign: 'center',
   fontFamily:
     "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
   fontSize: '24px',

@@ -9,7 +9,7 @@ import { DateTime } from 'luxon'
 import UserAlreadyExistException from '#exceptions/user_already_exist'
 import env from '#start/env'
 import { DTORegister } from '#types/auth'
-import StripeWelcomeEmail from '../emails/stripe-welcome.js'
+import KipkidVerifyEmail from '../emails/kipkid-verify-email.js'
 
 @inject()
 export default class AuthService {
@@ -48,7 +48,7 @@ export default class AuthService {
     storage.targetId = user.id
     storage = await storage.save()
     const url = `${env.get('HOST_URL')}/auth/validate-email/${storage.id}`
-    const html = render(<StripeWelcomeEmail validateLink={url} />)
+    const html = render(<KipkidVerifyEmail validateLink={url} />)
     await mail.send((message) => {
       message
         .to(user.email)
