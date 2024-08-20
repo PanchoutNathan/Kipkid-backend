@@ -6,11 +6,10 @@ WORKDIR /app
 ADD package.json package-lock.json ./
 RUN npm ci
 
-## Production only deps stage
-#FROM base as production-deps
-#WORKDIR /app
-#ADD package.json package-lock.json ./
-#RUN npm ci --omit=dev
+# Production only deps stage
+FROM base as production-deps
+WORKDIR /app
+ADD package.json package-lock.json ./
 
 # Build stage
 FROM base as build
