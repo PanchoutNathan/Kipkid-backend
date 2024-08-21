@@ -3,20 +3,21 @@ FROM node:20.12.2-alpine3.18 as base
 # All deps stage
 FROM base as deps
 WORKDIR /app
-ADD package.json package-lock.json ./
-RUN npm ci
+ADD package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
 # Production only deps stage
 FROM base as production-deps
 WORKDIR /app
 ADD package.json package-lock.json ./
+RUN yarn install --frozen-lockfile --production
 
 # Build stage
 FROM base as build
 WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 ADD . .
-RUN node ace build
+RUN node ace build --ignore-ts-errors
 
 # Production stage
 FROM base

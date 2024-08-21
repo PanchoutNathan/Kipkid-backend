@@ -1,13 +1,17 @@
-version: '3.9'
+version: '3.8'
 
 services:
-  postgres:
-    image: postgres:16-alpine
+  kipkid-api:
+    image: kipkid_api
+    container_name: kipkid
+    build:
+      context: .
     ports:
-      - 5432:5432
+      - 8080:8080
+      - 9229:9229
+    env_file:
+      - .env.production
     volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=adonis
+      - ./:/home/node/app
+      - /home/node/app/node_modules
+
