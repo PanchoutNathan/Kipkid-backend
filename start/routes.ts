@@ -32,6 +32,7 @@ const GetAllCalendarEventsController = () =>
 const ValidateEmailsController = () => import('#controllers/views/auth/validate_emails_controller')
 
 const ChildrenController = () => import('#controllers/children_controller')
+const ChildContractsController = () => import('#controllers/contracts/child_contracts_controller')
 import { middleware } from '#start/kernel'
 
 import router from '@adonisjs/core/services/router'
@@ -85,7 +86,18 @@ router
       .apiOnly()
       .use('*', middleware.auth())
 
+    router
+      .group(() => {
+        router.get('/child/:childId/contracts', [ChildContractsController, 'index'])
+        router.post('/child/:childId/contracts', [ChildContractsController, 'store'])
+        router.get('/child-contract/:id', [ChildContractsController, 'show'])
+        router.patch('/child-contract/:id', [ChildContractsController, 'update'])
+        router.delete('/child-contract/:id', [ChildContractsController, 'destroy'])
+      })
+      .use(middleware.auth())
+
     router.resource('child', ChildrenController).apiOnly().use('*', middleware.auth())
+
     router.resource('week-template', WeekTemplatesController).apiOnly().use('*', middleware.auth())
 
     // ajoutez cette route

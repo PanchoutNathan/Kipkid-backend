@@ -1,5 +1,5 @@
 import User from '#models/user'
-import { DTOUpdateUser } from '#types/users'
+import { DTOUpdateParent } from '#types/users'
 import { Nullable } from '#types/utils'
 import { removeEmpty } from '#utils/clean'
 
@@ -8,14 +8,24 @@ import { DateTime } from 'luxon'
 
 @inject()
 export default class UserService {
+  async getById(id: number): Promise<Nullable<User>> {
+    return User.findOrFail(id)
+  }
+
   async getUserByEmail(email: string): Promise<Nullable<User>> {
     return User.findBy('email', email)
   }
 
-  async updateUser(id: number, payload: DTOUpdateUser): Promise<User> {
+  async updateUser(id: number, payload: DTOUpdateParent): Promise<User> {
     const user = await User.findOrFail(id)
-    console.log(removeEmpty(payload))
-    user.merge(removeEmpty(payload))
+
+    user.merge({ ...removeEmpty(payload) })
+    user.settings = {
+      parent: {
+        pajeNumber: payload.pajeNumber,
+        socialNumber: payload.socialNumber,
+      },
+    }
     if (payload.birthday) {
       user.birthday = DateTime.fromJSDate(payload.birthday)
     }

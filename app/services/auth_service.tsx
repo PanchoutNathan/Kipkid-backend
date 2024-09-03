@@ -9,6 +9,7 @@ import { DateTime } from 'luxon'
 import UserAlreadyExistException from '#exceptions/user_already_exist'
 import env from '#start/env'
 import { DTORegister } from '#types/auth'
+import { UserType } from '#types/users'
 import KipkidVerifyEmail from '../emails/kipkid-verify-email.js'
 
 @inject()
@@ -20,7 +21,11 @@ export default class AuthService {
     } else if (currentUser && !currentUser.validatedEmail) {
       await currentUser.delete()
     }
-    const user = await User.create({ ...payload, validatedEmail: false })
+    const user = await User.create({
+      ...payload,
+      validatedEmail: false,
+      userType: payload.userType ?? UserType.PARENT,
+    })
     this.sendValidateEmail(user)
     return user
   }

@@ -30,3 +30,14 @@ export const GIRL_CONTRACT: Contract = {
 }
 
 export const ALL_CONTRACTS: Contract[] = [BOY_CONTRACT, GIRL_CONTRACT]
+
+export enum PaymentHolidayMode {
+  MONTHLY = 'monthly',
+  FULL_YEAR_CONTRACT = 'full_year_contract',
+  YEARLY = 'yearly',
+}
+
+export enum RestDayMode {
+  PAY = 'pay',
+  REST = 'rest',
+}

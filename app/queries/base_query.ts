@@ -16,7 +16,7 @@ export default class BaseQuery<Model extends LucidModel, Record extends LucidRow
     return this
   }
 
-  where(column: string, operator?: any, value?: any) {
+  where(column: string, operator: string = '=', value?: any) {
     if (value !== undefined) {
       this.query.where(column, operator, value)
       return this
@@ -79,6 +79,11 @@ export default class BaseQuery<Model extends LucidModel, Record extends LucidRow
 
   canView(user: User) {
     this.query.whereRaw('? = ANY (acl_read)', [user?.id as number])
+    return this
+  }
+
+  canUpdate(user: User) {
+    this.query.whereRaw('? = ANY (acl_write)', [user?.id as number])
     return this
   }
 

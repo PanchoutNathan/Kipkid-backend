@@ -13,14 +13,14 @@ export default class extends BaseSchema {
   // "contract" uuid not null
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('id').primary()
       table.specificType('events', 'jsonb[]')
       table.string('date')
       table.jsonb('meal')
       table.jsonb('car')
       table.jsonb('settings')
       table.text('type')
-      table.integer('contract_id').unsigned().references('id').inTable('contracts')
+      table.integer('contract_id').unsigned().references('id').inTable('child_contracts')
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

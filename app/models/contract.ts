@@ -27,6 +27,9 @@ export default class Contract extends BaseModel {
   @column()
   declare acl_write: number[]
 
+  @column()
+  declare start_hour: string
+
   @column.dateTime({
     autoCreate: true,
     serialize: (value: DateTime) => dayjs(value.toISODate()).format('YYYY-MM-DD'),

@@ -23,7 +23,12 @@ export default class ChildService {
   }
 
   async getById(id: number): Promise<Child> {
-    const child = await Child.find(id)
+    const child = await Child.query()
+      .preload('contracts', (contractsQuery) => {
+        contractsQuery.preload('asm').preload('user')
+      })
+      .where('id', id)
+      .first()
 
     if (!child) {
       throw new NotFoundException("this child dosn't exist")

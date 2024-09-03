@@ -11,7 +11,7 @@
 html,
 body,
 #app {
-  background-color: #f7f8fa;
+  background-color: white;
   font-family: 'Poppins', sans-serif;
   color: #46444c;
   height: 100%;
@@ -36,4 +36,47 @@ body,
 a {
   text-decoration: underline;
   color: #5a45ff;
+}
+
+table {
+  table-layout: fixed;
+
+  width: 297mm;
+}
+
+table td {
+  height: 80px;
+  position: relative;
+  border: 1px solid #e8e5e3;
+}
+
+li {
+  display: list-item;
+}
+
+li::marker {
+  color: red;
+}
+
+table td:before {
+  content: attr(data-day);
+  display: block;
+  font-size: 7px;
+  position: absolute;
+  top: 3px;
+  right: 5px;
+}
+
+@page print {
+  orientation: landscape;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+  }
+
+  /* ... the rest of the rules ... */
 }

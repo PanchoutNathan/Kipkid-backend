@@ -19,7 +19,7 @@ export default class CalendarEventService {
   constructor(protected contractService: ContractService) {}
 
   async getEventsByDate(user: User, date: string) {
-    return CalendarEventsQuery.new(user).withDate(date).canRead().query
+    return CalendarEventsQuery.new(user).withDate(date).canRead().withContract().query
   }
 
   async addEvent(

@@ -45,3 +45,11 @@ export const getDefaultSelectedMeal = (): SelectedMeals => {
     [MealType.DINNER]: false,
   }
 }
+
+export type MealsPrice = {
+  age: number
+  [MealType.BREAKFAST]: number
+  [MealType.LUNCH]: number
+  [MealType.TEA]: number
+  [MealType.DINNER]: number
+}

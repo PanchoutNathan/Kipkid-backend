@@ -1,15 +1,15 @@
-import Contract from '#models/contract'
+import ChildContract from '#models/child_contract'
 import type {
   CalendarEventEvent,
   CalendarEventKilometers,
   CalendarEventMeal,
 } from '#types/calendar_event'
-import { column, hasOne } from '@adonisjs/lucid/orm'
+import { BaseModel, column, hasOne } from '@adonisjs/lucid/orm'
 import type { HasOne } from '@adonisjs/lucid/types/relations'
 
 import { DateTime } from 'luxon'
 
-export default class CalendarEvent {
+export default class CalendarEvent extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
@@ -34,8 +34,8 @@ export default class CalendarEvent {
   @column()
   declare contractId: number
 
-  @hasOne(() => Contract, { localKey: 'contractId' })
-  declare contract: HasOne<typeof Contract>
+  @hasOne(() => ChildContract, { localKey: 'contractId', foreignKey: 'id' })
+  declare contract: HasOne<typeof ChildContract>
 
   @column()
   declare settings?: any

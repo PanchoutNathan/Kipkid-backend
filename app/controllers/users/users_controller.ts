@@ -22,7 +22,10 @@ export default class UsersController {
   /**
    * Display a single post by id.
    */
-  async show({ params }: HttpContext) {}
+  async show({ params }: HttpContext) {
+    const id = params.id
+    return this.userService.getById(id)
+  }
 
   /**
    * Handle the form submission to update a specific post by id

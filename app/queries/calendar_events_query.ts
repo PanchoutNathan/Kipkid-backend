@@ -16,16 +16,21 @@ export default class CalendarEventsQuery extends BaseQuery<typeof CalendarEvent,
     return this
   }
 
+  withContract() {
+    this.query.preload('contract', (query) => query.preload('ch'))
+    return this
+  }
+
   canRead() {
     if (!this.user) {
       return this
     }
 
     this.query
-      .join('contracts', (query) => {
-        return query.on('calendar_events.contract_id', '=', 'contracts.id')
+      .join('child_contracts', (query) => {
+        return query.on('calendar_events.contract_id', '=', 'child_contracts.id')
       })
-      .whereRaw('? = ANY (contracts.acl_read)', [this.user.id])
+      .whereRaw('? = ANY (child_contracts.acl_read)', [this.user.id])
 
     return this
   }

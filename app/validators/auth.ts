@@ -1,4 +1,5 @@
 import User from '#models/user'
+import { UserType } from '#types/users'
 import vine from '@vinejs/vine'
 
 export const loginValidator = vine.compile(
@@ -39,6 +40,7 @@ export const registerValidator2 = vine.compile(
     firstName: vine.string().maxLength(64),
     lastName: vine.string().maxLength(64),
     phoneNumber: vine.string().maxLength(10),
+    userType: vine.enum([UserType.ASM, UserType.PARENT]).optional(),
     email: vine
       .string()
       .email()
