@@ -16,8 +16,13 @@ export default class CalendarEventsQuery extends BaseQuery<typeof CalendarEvent,
     return this
   }
 
+  betweenDates(start: string, end: string) {
+    this.query.whereBetween('date', [start, end])
+    return this
+  }
+
   withContract() {
-    this.query.preload('contract', (query) => query.preload('ch'))
+    this.query.preload('contract', (query) => query.preload('child'))
     return this
   }
 

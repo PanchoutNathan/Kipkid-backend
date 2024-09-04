@@ -5,6 +5,7 @@ import { resolvePageComponent } from '@adonisjs/inertia/helpers'
 import { createInertiaApp } from '@inertiajs/react'
 import { hydrateRoot } from 'react-dom/client'
 import '../css/app.css'
+import '../css/fonts.css'
 
 const appName = import.meta.env.VITE_APP_NAME || 'AdonisJS'
 

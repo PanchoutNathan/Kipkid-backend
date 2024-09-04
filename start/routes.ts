@@ -27,12 +27,13 @@ const UpdateCalendarEventController = () =>
 const UploadsController = () => import('#controllers/uploads_controller')
 
 const UsersController = () => import('#controllers/users/users_controller')
-const GetAllCalendarEventsController = () =>
-  import('#controllers/calendar_events/get_all_calendar_events_controller')
+
 const ValidateEmailsController = () => import('#controllers/views/auth/validate_emails_controller')
 
 const ChildrenController = () => import('#controllers/children_controller')
 const ChildContractsController = () => import('#controllers/contracts/child_contracts_controller')
+const CalendarShareController = () =>
+  import('#controllers/views/calendar/share/calendar_share_controller')
 import { middleware } from '#start/kernel'
 
 import router from '@adonisjs/core/services/router'
@@ -102,11 +103,12 @@ router
 
     // ajoutez cette route
     router.post('/upload', [UploadsController, 'upload'])
-    router.get('/toto', [GetAllCalendarEventsController])
+
     router.get('/upload/:image', [UploadsController, 'getImage'])
     router.get('/', [TotoController])
   })
   .prefix('api')
 
-router.on('/').renderInertia('home', { version: 99 })
+router.get('/calendar/generate/month/:year/:month', [CalendarShareController, 'index'])
+router.get('/testing', [CalendarShareController, 'testing'])
 router.get('/auth/validate-email/:storage', [ValidateEmailsController, 'index'])

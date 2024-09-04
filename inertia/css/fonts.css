@@ -1,0 +1,32 @@
+@font-face {
+  font-family: Recoleta-Bold;
+  src: url('../assets/fonts/Recoleta/Recoleta-Bold.ttf');
+}
+@font-face {
+  font-family: Recoleta-SemiBold;
+  src: url('../assets/fonts/Recoleta/Recoleta-SemiBold.ttf');
+}
+@font-face {
+  font-family: RecoletaAlt-Bold;
+  src: url('../assets/fonts/Recoleta/RecoletaAlt-Bold.ttf');
+}
+@font-face {
+  font-family: RecoletaAlt-SemiBold;
+  src: url('../assets/fonts/Recoleta/RecoletaAlt-SemiBold.ttf');
+}
+@font-face {
+  font-family: Inter-Bold;
+  src: url('../assets/fonts/Inter/Inter-Bold.ttf');
+}
+@font-face {
+  font-family: Inter-SemiBold;
+  src: url('../assets/fonts/Inter/Inter-SemiBold.ttf');
+}
+@font-face {
+  font-family: Inter-Medium;
+  src: url('../assets/fonts/Inter/Inter-Medium.ttf');
+}
+@font-face {
+  font-family: Inter-Regular;
+  src: url('../assets/fonts/Inter/Inter-Regular.ttf');
+}

@@ -1,9 +1,11 @@
+import CalendarEvent from '#models/calendar_event'
+import { ChildContractType } from '#types/child_contract'
 import { SelectedMeals } from '#types/meals'
 import { Dayjs } from 'dayjs'
 
 export type DailyCalendarEvent = {
   id: string
-  contract: string
+  contractId: string
   events: CalendarEventEvent[]
   date: string
   type?: DailyCalendarEventType
@@ -15,6 +17,7 @@ export type DailyCalendarEvent = {
   color?: string
   settings?: any
   sync?: boolean
+  contract?: ChildContractType
 }
 
 export type DTODailyCalendarEvent = Omit<DailyCalendarEvent, 'id' | 'events'> & {
@@ -81,7 +84,7 @@ export type DailyCalendarEventByWeek = {
 }
 
 export type DailyCalendarEventByDate = {
-  [key: string]: DailyCalendarEvent[]
+  [key: string]: CalendarEvent[]
 }
 
 export interface DayData {
@@ -101,4 +104,23 @@ export type WeekEventsLight = {
   4: CalendarEventLight[]
   5: CalendarEventLight[]
   6: CalendarEventLight[]
+}
+
+export type LightEventWithContract = {
+  id: number
+  events: CalendarEventEvent[]
+  date: string
+  contract: {
+    id: number
+    child: {
+      firstName: string
+      lastName: string
+      color: string
+      stricker: string
+    }
+  }
+}
+
+export type LightEventWithContractByDates = {
+  [key: string]: LightEventWithContract[]
 }

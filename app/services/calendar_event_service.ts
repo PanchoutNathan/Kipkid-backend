@@ -22,6 +22,10 @@ export default class CalendarEventService {
     return CalendarEventsQuery.new(user).withDate(date).canRead().withContract().query
   }
 
+  async getEventsBetweenDates(user: User, start: string, end: string): Promise<CalendarEvent[]> {
+    return CalendarEventsQuery.new(user).canRead().betweenDates(start, end).withContract().query
+  }
+
   async addEvent(
     contracts: number[],
     dates: string[],

@@ -3,6 +3,10 @@ import { defineConfig, transports } from '@adonisjs/mail'
 
 const mailConfig = defineConfig({
   default: 'resend',
+  from: {
+    address: 'contact@kipcorp.fr',
+    name: 'Kipkid',
+  },
 
   /**
    * The mailers object can be used to configure multiple mailers

@@ -31,6 +31,7 @@ export default {
       },
 
       fontFamily: {
+        nunito: ['nunito', 'sans-serif'],
         ['RecoletaAlt-Bold']: ['RecoletaAlt-Bold'],
         ['RecoletaAlt-SemiBold']: ['RecoletaAlt-SemiBold'],
         ['Recoleta-Bold']: ['Recoleta-Bold'],
