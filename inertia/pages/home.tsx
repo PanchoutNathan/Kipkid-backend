@@ -1,6 +1,7 @@
 import { LightEventWithContract, LightEventWithContractByDates } from '#types/calendar_event'
 import { Head } from '@inertiajs/react'
 import dayjs from 'dayjs'
+
 import fr from 'dayjs/locale/fr'
 
 import localizedFormat from 'dayjs/plugin/localizedFormat'
@@ -56,32 +57,26 @@ export default function Home({ year, month, allEvents }: Props) {
   const getContent = (eventsData: LightEventWithContract[]) => {
     return (
       <div className="p-3">
-        {[0, 1, 2, 3, 4, 5, 6, 7].map(() => {
-          return (
-            <>
-              {eventsData.map((ev) => {
-                return ev.events.map((dayEvent) => {
-                  const startHour = dayjs(dayEvent.start).format('HH:mm')
-                  const endHour = dayjs(dayEvent.end).format('HH:mm')
-                  return (
-                    <div key={dayEvent.start} className="flex flex-row gap-1 items-center">
-                      <div
-                        style={{ backgroundColor: ev.contract.child.color }}
-                        className="w-[6px] h-[9px] rounded-lg"
-                      />
-                      <p
-                        suppressHydrationWarning
-                        style={{ color: ev.contract.child.color }}
-                        className="text-[7.8px] text-center"
-                      >
-                        {startHour} - {endHour}
-                      </p>
-                    </div>
-                  )
-                })
-              })}
-            </>
-          )
+        {eventsData.map((ev) => {
+          return ev.events.map((dayEvent) => {
+            const startHour = dayjs(dayEvent.start).format('HH:mm')
+            const endHour = dayjs(dayEvent.end).format('HH:mm')
+            return (
+              <div key={dayEvent.start} className="flex flex-row gap-1 item-">
+                <div
+                  style={{ backgroundColor: ev.contract.child.color }}
+                  className="w-[6px] h-[9px] rounded-lg"
+                />
+                <p
+                  suppressHydrationWarning
+                  style={{ color: ev.contract.child.color }}
+                  className="text-[7.8px] text-center"
+                >
+                  {startHour} - {endHour}
+                </p>
+              </div>
+            )
+          })
         })}
       </div>
     )

@@ -104,11 +104,23 @@ router
     // ajoutez cette route
     router.post('/upload', [UploadsController, 'upload'])
 
+    router.get('/calendar/view/month/:year/:month', [CalendarShareController, 'month'])
+    router.get('/calendar/view/week/:year/:week', [CalendarShareController, 'week'])
+
+    router.get('/generate/pdf/calendar/month/:year/:month', [
+      CalendarShareController,
+      'generatePdfMonth',
+    ])
+    router.get('/generate/pdf/calendar/week/:year/:week', [
+      CalendarShareController,
+      'generatePdfWeek',
+    ])
     router.get('/upload/:image', [UploadsController, 'getImage'])
     router.get('/', [TotoController])
   })
   .prefix('api')
 
-router.get('/calendar/generate/month/:year/:month', [CalendarShareController, 'index'])
-router.get('/testing', [CalendarShareController, 'testing'])
+router.get('/calendar/generate/month/:year/:month', [CalendarShareController, 'month'])
+router.get('/calendar/generate/week/:year/:week', [CalendarShareController, 'week'])
+
 router.get('/auth/validate-email/:storage', [ValidateEmailsController, 'index'])
